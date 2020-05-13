@@ -1,0 +1,16 @@
+//- views/user.pug
+
+extends layout
+
+block content
+  br
+  .w3-container
+    .w3-card-4
+      header
+      h1 Welcome #{user.nickname}
+      img(src=user.picture)
+      h2 User profile
+      p This user has the following permissions:
+        ul
+          each val in permissions
+            li= val
