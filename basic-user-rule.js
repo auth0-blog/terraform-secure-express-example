@@ -11,12 +11,12 @@ function addBasicRoleToUser(user, context, callback) {
   };
   const data = {
       "roles": [
-          "{TERRAFORM_ROLE_ID}"
+          "${TERRAFORM_ROLE_ID}"
       ]
   };
 
   request.post({
-      url: `https://${auth0.domain}/api/v2/users/${user.user_id}/roles`,
+      url: `https://$${auth0.domain}/api/v2/users/$${user.user_id}/roles`,
       headers: headers,
       json: data
   }, (err, response, body) => {

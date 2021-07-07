@@ -76,7 +76,9 @@ resource "auth0_role" "terraform-express-basic-user-role" {
 }
 
 resource "auth0_rule" "terraform-express-basic_user-rule" {
-  name    = "basic-user-role-assignment"
-  script  = replace(file("${path.module}/basic-user-rule.js"), "{TERRAFORM_ROLE_ID}", auth0_role.terraform-express-basic-user-role.id)
+  name = "basic-user-role-assignment"
+  script = templatefile("${path.module}/basic-user-rule.js", {
+    TERRAFORM_ROLE_ID : auth0_role.terraform-express-basic-user-role.id
+  })
   enabled = true
 }
